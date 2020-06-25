@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+        "http://struts.apache.org/dtds/struts-2.5.dtd">
+
+<struts>
+
+    <package name="default" namespace="/"  extends="struts-default" >
+        <!--管理员登陆-->
+        <action name="adminLogin" class="action.AdminAction" method="excute" >
+            <result name="success" type="chain">findAll</result>
+            <result name="login">/login.jsp</result>
+        </action>
+        <!--查询所有学生的信息-->
+        <action name="findAll" class="action.StudentAction" method="findAll">
+            <result name="success">/student_query.jsp</result>
+            <result name="error">/error.jsp</result>
+        </action>
+        <!--修改学生信息-->
+        <action name="update" class="action.StudentAction" method="update">
+            <result name="success" type="chain">findAll</result>
+        </action>
+        <!--删除学生信息-->
+        <action name="delete" class="action.StudentAction" method="delete">
+            <result name="success" type="chain">findAll</result>
+        </action>
+        <!--添加信息-->
+        <action name="insert" class="action.StudentAction" method="insert">
+            <result name="success" type="chain">findAll</result>
+        </action>
+        <!--模糊查询-->
+        <action name="findByName" class="action.StudentAction" method="findByName">
+            <result name="success">/student_query.jsp</result>
+        </action>
+        <!--学生登陆-->
+        <action name="studentLogin" class="action.StudentAction" method="studentLogin">
+            <result name="success">/student_userself.jsp</result>
+        </action>
+
+    </package>
+</struts>
